@@ -88,3 +88,9 @@ variable "vm_network_interface" {
   type        = string
   default     = "Production"
 }
+
+variable "resource_instance_count" {
+  description = "Number of VMs to deploy"
+  type = string
+  default = "2"
+}

@@ -1,6 +1,7 @@
 # Create network adapter
 resource "azurerm_network_interface" "vm_network_interface" {
-  name                = "${var.resource_name}-ni"
+  count               = var.resource_instance_count
+  name                = "${var.resource_name}${count.index + 1}"
   location            = azurerm_resource_group.vm_group.location
   resource_group_name = azurerm_resource_group.vm_group.name
 
@@ -13,14 +14,15 @@ resource "azurerm_network_interface" "vm_network_interface" {
 
 # Create virtual machine
 resource "azurerm_windows_virtual_machine" "virtual_machine" {
-  name                  = var.resource_name
-  resource_group_name   = azurerm_resource_group.vm_group.name
-  location              = azurerm_resource_group.vm_group.location
-  size                  = var.resource_size
-  admin_username        = var.admin_username
-  admin_password        = random_password.vm_password.result
+  count               = var.resource_instance_count
+  name                = "${var.resource_name}${count.index + 1}"
+  resource_group_name = azurerm_resource_group.vm_group.name
+  location            = azurerm_resource_group.vm_group.location
+  size                = var.resource_size
+  admin_username      = var.admin_username
+  admin_password      = random_password.vm_password[count.index].result
   license_type          = "Windows_Server"
-  network_interface_ids = [azurerm_network_interface.vm_network_interface.id]
+  network_interface_ids = [azurerm_network_interface.vm_network_interface[count.index].id,]
 
   os_disk {
     caching              = "ReadOnly"

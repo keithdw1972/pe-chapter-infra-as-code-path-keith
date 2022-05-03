@@ -1,0 +1,61 @@
+# Infrastructure as Code Pathway
+
+## Terraform Exercises
+1. Use a count argument to add the ability to create multiple resources, each with a unique name.
+2. Deploy an availability set (Azure only).
+3. Deploy virtual machines into availability set (Azure only).
+4. Convert to a module which allows for the deployment to multiple regions.
+5. Add locals to allow for calculations in each deployment, this can help with naming etc.
+6. Add logic to decide when to create an availability set using conditional expressions (Azure only)
+7. Enable the provisioning across multiple availability zones, with even resource deployment
+
+### Required Prerequisites
+- Download of an approciate editor e.g VSCode
+- Understanding of basic cloud concepts (AWS & Azure)
+- Understanding of AWS VPC & Azure Virtual Network networking
+
+### Learning Objectives
+1. Use count arguments within terraform to create multiple resources and provide unique naming
+2. Understand the concept of a module within Terraform
+3. Understanding of Terraform functions
+4. Understand the concept of locals within a Terraform module
+5. The use of conditional expressions to add logic into modules
+6. The use of maps within variables
+
+### Key Concepts
+
+| Concept                 |
+| ----------------------- |
+| Count argument          |
+| Modules                 |
+| Functions               |
+| Locals                  |
+| Regular expression      |
+| Conditional expressions |
+
+### Useful Resources
+- [Count arguments](https://www.terraform.io/language/meta-arguments/count)
+- [Modules](https://www.terraform.io/language/modules)
+- [Functions](https://www.terraform.io/language/functions)
+- [Locals](https://www.terraform.io/language/values/locals)
+- [Regular expression](https://www.terraform.io/language/functions/regex)
+- [Regex tester](https://www.regextester.com/)
+- [Conditional expressions](https://www.terraform.io/language/expressions/conditionals)
+
+## Codebase version history
+
+| Version | Description                                                                                                                                                                    | Platform    |
+| :-----: | :----------------------------------------------------------------------------------------------------------------------------------------------------                          | ----------: |
+|   v6    | Add a count argument to create multiple virtual machines, ensuring unique naming                                                                                               | AWS & Azure |
+|   v7    | Add an availability set resource                                                                                                                                               | Azure       |
+|   v8    | Add VMs to the availability set, which must be done at creation                                                                                                                | Azure       |
+|   v9    | Convert to a module so it's possible to deploy into multiple regions for redundancy. <br> For Azure, this can be achieved via a for_loop, however this is not possible via AWS | AWS & Azure |
+|   v10   | Use of locals to calculate values, and use of region as a unique identifier for naming resources                                                                               | AWS & Azure |
+|   v11   | Add a conditional expression to decide when to create an availability set                                                                                                      | Azure       |
+|   v12   | Add a conditional expression to decide when to add VMs to an availability zone, and ensuring each VM is in a different zone (up to maximum available)                          | AWS & Azure |
+
+[github-link]: https://github.com/wesley-trust/TerraformTraining
+
+## Network Diagram
+### AWS
+![iac_pathway_aws_day4](https://user-images.githubusercontent.com/99733577/165635057-e45f03df-cb9a-455d-8e6a-35c659d0efba.jpg)

@@ -1,0 +1,52 @@
+# Infrastructure as Code Pathway
+
+## Terraform Exercises
+1. Separate the compute & network resources into individual modules.
+2. Add networking resources. Internet gateway, route tables & a default security group.
+   - AWS: Internet gateway, route tables @ default security group
+   - Azure: Route tables and network security groups (NSGs) 
+3. Add dependences to remove resource deadlock (Azure only)
+4. Add additional volumes to virtual machines.
+   - AWS:  EBS Volumes
+   - Azure: Azure Data desks
+
+### Required Prerequisites
+- Download of an approciate editor e.g VSCode
+- Understanding of basic cloud concepts (AWS & Azure)
+- Understanding of AWS VPC & Azure Virtual Network networking
+- Understanding of AWS EBS volumes & Azure Data Disks
+
+### Learning Objectives
+1. Further understanding of Terraform modules
+2. Understand best practices for Terraform structure
+
+### Key Concepts
+
+| Concept                  |
+| ------------------------ |
+| Modules                  |
+| Cloud Networking         |
+| CLoud Additional volumes |
+
+
+### Useful Resources
+- [Modules](https://www.terraform.io/language/modules)
+- [Terraform module structure](https://www.terraform.io/language/modules/develop/structure)
+- [AWS Internet Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
+- [AWS Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
+- [AWS EBS Volumes](https://aws.amazon.com/ebs/)
+
+## Codebase version history
+
+| Version | Description                                                                                                                                           | Platform    |
+| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------: |
+|   v13   | Modularise - Compute and Network now in separate modules                                                                                              | AWS & Azure |
+|   v14   | Add more networking resources, <br> - AWS: internet gateway, route tables & default security group <br> - Azure: route tables and network security groups (NSGs) - introduce possible resource deadlock | AWS & Azure |
+|   v15   | Add explicit dependency for network (to remove deadlock of interfaces being associated at the same time as route tables/NSGs)                         | Azure       |
+|   v16   | Create module to add multiple data disks to multiple virtual machines (with support for regions with and without availability zones)                  | AWS & Azure |
+
+## Network Diagram
+### AWS
+![iac_pathway_aws_day5](https://user-images.githubusercontent.com/99733577/160142239-42c3e538-7c21-42de-9855-399b9f7c369d.jpg)
+
+[github-link]: https://github.com/wesley-trust/TerraformTraining
